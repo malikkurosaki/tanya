@@ -6,6 +6,8 @@
 // ini hanyalah project iseng untuk ngisi waktu luang aja
 ```
 
+### Malik kurosaki
+
 ## Lisensi
 
 Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE.md](LICENSE.md) untuk detail lisensi.
