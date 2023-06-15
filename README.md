@@ -6,7 +6,7 @@
 // ini hanyalah project iseng untuk ngisi waktu luang aja
 ```
 
-### Malik_kurosaki
+### malik_kurosaki
 
 ## Lisensi
 
