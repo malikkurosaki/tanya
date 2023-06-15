@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "main": "index.ts",
   "license": "MIT",
+  "description": "project iseng aja",
+  "author": "Malik Kurosaki <malikkurosaki@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malikkurosaki/tanya.git"
+  },
   "dependencies": {
     "@types/marked": "^5.0.0",
     "@types/marked-terminal": "^3.1.3",
