@@ -2,28 +2,29 @@
 import { ChatGPTAPI } from 'chatgpt'
 import readline from "readline";
 import "colors"
-// import TerminalRenderer from 'marked-terminal'
-// import {marked} from 'marked'
+import CryptoJS from 'crypto-js'
 
-// marked.setOptions({
-//     // Define custom renderer
-//     renderer: new TerminalRenderer() as any
-//   });
+const secretKey = 'ini adalah rahasia iseng aja';
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+const bytes = CryptoJS.AES.decrypt("U2FsdGVkX1/2GLH6mntOKRIsU4Dnw3aJPo4j+6pDZO4c4o83m0sr0wD3gmwQLPh530PUYJuPvz6z8d/a9aSLkbT5Q6Q8KvM9IEVy2yRgStc=", secretKey);
+const decrypted = bytes.toString(CryptoJS.enc.Utf8);
 
-rl.question('tanya sesuatu? '.cyan, (name) => {
-    main(name)
-    rl.close();
-});
+function main() {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
 
-async function main(kalimat) {
+    rl.question('tanya sesuatu? '.cyan, (name) => {
+        tanya(name)
+        rl.close();
+    });
+}
+
+async function tanya(kalimat) {
     try {
         const api = new ChatGPTAPI({
-            apiKey: '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'
+            apiKey: decrypted
         })
 
         console.log("tunggu ....")
@@ -33,9 +34,9 @@ async function main(kalimat) {
 
         console.log(res.text.green)
     } catch (error) {
-        console.log("error")
+        console.log("hahah error, mungkin ada yang salah".red)
     }
-    // console.log(marked(res.text))
+
 }
 
-// main()
+main()

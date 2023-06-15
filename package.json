@@ -10,13 +10,10 @@
     "url": "git+https://github.com/malikkurosaki/tanya.git"
   },
   "dependencies": {
-    "@types/marked": "^5.0.0",
-    "@types/marked-terminal": "^3.1.3",
+    "@types/crypto-js": "^4.1.1",
     "chatgpt": "^5.2.5",
     "colors": "^1.4.0",
-    "fetch": "^1.1.0",
-    "marked": "^5.1.0",
-    "node-fetch": "^3.3.1",
+    "crypto-js": "^4.1.1",
     "readline": "^1.3.0"
   },
   "bin": {
