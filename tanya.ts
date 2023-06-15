@@ -21,16 +21,20 @@ rl.question('tanya sesuatu? '.cyan, (name) => {
 });
 
 async function main(kalimat) {
-    const api = new ChatGPTAPI({
-        apiKey: "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"
-    })
+    try {
+        const api = new ChatGPTAPI({
+            apiKey: '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'
+        })
 
-    console.log("tunggu ....")
-    const res = await api.sendMessage(kalimat)
-    console.log("")
-    console.log("** JAWABAN **".yellow)
+        console.log("tunggu ....")
+        const res = await api.sendMessage(kalimat)
+        console.log("")
+        console.log("** JAWABAN **".yellow)
 
-    console.log(res.text.green)
+        console.log(res.text.green)
+    } catch (error) {
+        console.log("error")
+    }
     // console.log(marked(res.text))
 }
 
