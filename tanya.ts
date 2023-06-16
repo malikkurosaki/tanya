@@ -3,6 +3,18 @@ import { ChatGPTAPI } from 'chatgpt'
 import readline from "readline";
 import "colors"
 import CryptoJS from 'crypto-js'
+import cliMd from 'cli-markdown';
+
+function loadingAnimation(clear: (val: NodeJS.Timer) => void): void {
+    const frames = ['-', '\\', '|', '/'];
+    let i = 0;
+    const inv = setInterval(() => {
+        process.stdout.write(`\r${frames[i++]} Loading...`);
+        i %= frames.length;
+    }, 100);
+
+    clear(inv);
+}
 
 const secretKey = 'ini adalah rahasia iseng aja';
 
@@ -21,19 +33,26 @@ function main() {
     });
 }
 
+let interval: NodeJS.Timer;
 async function tanya(kalimat) {
+    
+    loadingAnimation((val) => {
+        interval = val
+    })
     try {
         const api = new ChatGPTAPI({
             apiKey: decrypted
         })
 
-        console.log("tunggu ....")
+        // console.log("tunggu ....")
         const res = await api.sendMessage(kalimat)
         console.log("")
         console.log("** JAWABAN **".yellow)
 
-        console.log(res.text.green)
+        clearInterval(interval)
+        console.log(cliMd(res.text))
     } catch (error) {
+        clearInterval(interval)
         console.log("hahah error, mungkin ada yang salah".red)
     }
 
