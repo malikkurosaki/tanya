@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx --no-warnings
+#!/usr/bin/env tsx
 import { ChatGPTAPI } from 'chatgpt'
 import readline from "readline";
 import "colors"
