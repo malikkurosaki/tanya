@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env tsx --no-warnings
 import { ChatGPTAPI } from 'chatgpt'
 import readline from "readline";
 import "colors"
@@ -17,7 +17,6 @@ function loadingAnimation(clear: (val: NodeJS.Timer) => void): void {
 }
 
 const secretKey = 'ini adalah rahasia iseng aja';
-
 const bytes = CryptoJS.AES.decrypt("U2FsdGVkX1/2GLH6mntOKRIsU4Dnw3aJPo4j+6pDZO4c4o83m0sr0wD3gmwQLPh530PUYJuPvz6z8d/a9aSLkbT5Q6Q8KvM9IEVy2yRgStc=", secretKey);
 const decrypted = bytes.toString(CryptoJS.enc.Utf8);
 
@@ -46,8 +45,8 @@ async function tanya(kalimat) {
 
         // console.log("tunggu ....")
         const res = await api.sendMessage(kalimat)
-        console.log("")
-        console.log("** JAWABAN **".yellow)
+        // console.log("")
+        // console.log("** JAWABAN **".yellow)
 
         clearInterval(interval)
         console.log(cliMd(res.text))

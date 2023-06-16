@@ -6,7 +6,19 @@
 // ini hanyalah project iseng untuk ngisi waktu luang aja
 ```
 
-### malik_kurosaki
+### install
+
+```bash
+npm i -g tanya
+```
+
+### use
+
+*open terminal and type tanya*.
+
+```bash
+tanya
+```
 
 ## Lisensi
 
