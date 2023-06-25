@@ -1,48 +1,20 @@
 #!/usr/bin/env tsx
-import { ChatGPTAPI } from 'chatgpt'
-import readline from "readline";
-import "colors"
-import CryptoJS from 'crypto-js'
-import cliMd from 'cli-markdown';
-import yargs from 'yargs'
-import _ from 'lodash'
-const flags = process.argv.slice(2)
-import { BingChat } from 'bing-chat'
-import ora from 'ora'
-import fs from 'fs'
-
-const cookie = fs.readFileSync('./cookies.txt').toString()
+const ora = require('ora').default
+const fetch = require('node-fetch2')
+const cliMd = require('cli-markdown')
 
 const loading = ora("loading ...")
 
 async function main() {
     loading.start()
-  const api = new BingChat({
-    cookie: cookie
-  })
-
-  const res = await api.sendMessage(flags.join(" "))
-  loading.stop()
-  console.log(cliMd(res.text))
-  
+    const res = await fetch('https://tanya.makurostudio.my.id/tanya?text=' + process.argv.join(' '))
+    const text = await res.text()
+    cliMd(text)
+    loading.stop()
 }
 
 main()
 
-// const perintah = yargs
-// .version('1.0.0')
-// .epilog('Copyright © 2022 - All rights reserved')
-// .option("api", {
-//     alias: "a",
-//     type: "string",
-//     description: "masukkan api key".green,
-//     // demandOption: true
-// })
-// .parseSync();
-
-// if(perintah.api && !_.isEmpty(perintah.api)){
-//     console.log(perintah.api)
-// }
 
 
 
