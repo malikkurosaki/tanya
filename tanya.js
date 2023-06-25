@@ -1,16 +1,17 @@
 #!/usr/bin/env tsx
 const ora = require('ora').default
 const fetch = require('node-fetch2')
-const cliMd = require('cli-markdown')
+const cliMd = require('cli-markdown').default
 
 const loading = ora("loading ...")
 
 async function main() {
     loading.start()
-    const res = await fetch('https://tanya.makurostudio.my.id/tanya?text=' + process.argv.join(' '))
+    const res = await fetch('https://tanya.makurostudio.my.id/tanya?text=' + process.argv.slice(2).join(' '))
     const text = await res.text()
-    cliMd(text)
     loading.stop()
+    console.log(cliMd(text))
+    
 }
 
 main()
